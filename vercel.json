@@ -1,0 +1,3 @@
+{
+    "buildCommand": "npm i --force | vercel build"
+}

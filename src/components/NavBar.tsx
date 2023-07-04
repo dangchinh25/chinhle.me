@@ -10,6 +10,11 @@ export default function Navbar() {
             <a>About</a>
           </Link>
         </Button>
+        <Button>
+          <Link href='https://wiki.chinhle.me' underline="none">
+            <a>Wiki</a>
+          </Link>
+        </Button>
       </Stack>
     </AppBar>
   );
