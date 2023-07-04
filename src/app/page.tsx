@@ -1,23 +1,38 @@
 'use client'
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import NavBar from '@/components/NavBar';
+import { Container } from '@mui/material';
+import {makeStyles} from '@mui/styles'
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+    minHeight: '100vh'
+  },
+  wrapper: {
+    width: '40%',
+  }
+}))
 
 export default function HomePage() {
+  const classes = useStyles()
+
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <NavBar />
-      <Box component="main" sx={{ p: 3 }}>
-        <Toolbar />
+    <div className={classes.root}>
+      <Container className={classes.wrapper}>
+        <NavBar />
         <Typography>
-          Lorem ipsum
+          I love making and sharing things.
         </Typography>
-      </Box>
-    </Box>
+        <Typography>
+          I share everything I know in form of a personal documentation here.
+        </Typography>
+        <Typography>
+          Feel free to ask me anything.
+        </Typography>
+      </Container>
+    </div>
   );
 }
