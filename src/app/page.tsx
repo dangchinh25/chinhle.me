@@ -1,18 +1,18 @@
 'use client'
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import NavBar from '@/components/NavBar';
 import { Container } from '@mui/material';
 import {makeStyles} from '@mui/styles'
+import Navbar from '@/components/NavBar';
+import Footer from '@/components/Footer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    justifyContent: 'center',
-    minHeight: '100vh'
+    justifyContent: 'center'
   },
-  wrapper: {
-    width: '40%',
+  container: {
+    width: '40%'
   }
 }))
 
@@ -21,8 +21,9 @@ export default function HomePage() {
 
   return (
     <div className={classes.root}>
-      <Container className={classes.wrapper}>
-        <NavBar />
+      <Container className={classes.container}>
+        <Navbar />
+        
         <Typography>
           I love making and sharing things.
         </Typography>
@@ -32,6 +33,8 @@ export default function HomePage() {
         <Typography>
           Feel free to ask me anything.
         </Typography>
+
+        <Footer />
       </Container>
     </div>
   );
