@@ -1,23 +1,23 @@
-'use client'
+'use client';
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/material';
-import {makeStyles} from '@mui/styles'
+import { makeStyles } from '@mui/styles';
 import Navbar from '@/components/NavBar';
 import Footer from '@/components/Footer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   container: {
-    width: '40%'
-  }
-}))
+    width: '40%',
+  },
+}));
 
 export default function HomePage() {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <div className={classes.root}>
