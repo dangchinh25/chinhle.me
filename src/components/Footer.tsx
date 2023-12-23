@@ -67,6 +67,7 @@ function SlimSolidLine() {
             margin: "1em 0",
             padding: 0,
             }}
-        ></div>
+        >
+        </div>
 )
 }
