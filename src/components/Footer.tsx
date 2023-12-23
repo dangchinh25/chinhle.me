@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { FaGithub, FaLinkedin } from 'react-icons/fa6';
 import { FaYoutube, FaInstagram } from 'react-icons/fa';
+import { LINK } from '@/const';
 
 function SlimSolidLine() {
   return (
@@ -25,16 +26,16 @@ export default function Footer() {
       <SlimSolidLine />
 
       <div className='flex flex-row justify-evenly text-2xl text-richBlack' >
-        <Link href='https://github.com/dangchinh25'>
+        <Link href={LINK.GITHUB}>
           <FaGithub />
         </Link>
-        <Link href='https://www.youtube.com/channel/UCu5VfUF_Tdv9EJP5YORfMzg'>
+        <Link href={LINK.YOUTUBE}>
           <FaYoutube />
         </Link>
-        <Link href='https://www.linkedin.com/in/chinh-d-le/'>
+        <Link href={LINK.LINKEDIN}>
           <FaLinkedin />
         </Link>
-        <Link href='https://www.instagram.com/dangg_chinh/'>
+        <Link href={LINK.INSTAGRAM}>
           <FaInstagram />
         </Link>
       </div>

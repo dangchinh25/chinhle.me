@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import NavbarButton from './NavBarButton';
+import { LINK } from '@/const';
 
 export default function Navbar() {
   return (
@@ -20,7 +21,7 @@ export default function Navbar() {
           Likes
         </NavbarButton>
       </Link>
-      <Link href='https://wiki.chinhle.me'>
+      <Link href={LINK.WIKI}>
         <NavbarButton className=''>
           Wiki
         </NavbarButton>
