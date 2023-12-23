@@ -1,7 +1,7 @@
 export default function LikesPage() {
   return (
     <div>
-        Likes
+      Likes
     </div>
   );
 }

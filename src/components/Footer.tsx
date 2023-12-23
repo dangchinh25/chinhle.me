@@ -19,25 +19,25 @@ function SlimSolidLine() {
 
 export default function Footer() {
   return (
-        <div>
-            <SlimSolidLine />
+    <div>
+      <SlimSolidLine />
 
-            <div>
-                <Link href='https://github.com/dangchinh25'>
-                    github
-                </Link>
-                <Link href='https://www.youtube.com/channel/UCu5VfUF_Tdv9EJP5YORfMzg'>
-                    Youtube
-                </Link>
-                <Link href='https://www.linkedin.com/in/chinh-d-le/'>
-                   Linkedin
-                </Link>
-                <Link href='https://www.instagram.com/dangg_chinh/'>
-                   Instagram
-                </Link>
-            </div>
+      <div>
+        <Link href='https://github.com/dangchinh25'>
+          github
+        </Link>
+        <Link href='https://www.youtube.com/channel/UCu5VfUF_Tdv9EJP5YORfMzg'>
+          Youtube
+        </Link>
+        <Link href='https://www.linkedin.com/in/chinh-d-le/'>
+          Linkedin
+        </Link>
+        <Link href='https://www.instagram.com/dangg_chinh/'>
+          Instagram
+        </Link>
+      </div>
             
-            <div
+      <div
                 style={{
                   width: '5%',
                   marginTop: '20px',
@@ -45,14 +45,14 @@ export default function Footer() {
                   marginRight: 'auto',
                 }}
             >
-                <a href='https://github.com/dangchinh25'>
-                    <Image 
+        <a href='https://github.com/dangchinh25'>
+          <Image 
                         src='/Subject.png'
                         alt='memoji'
                         width='100'
                         height='75'/>
-                </a>
-            </div>
-        </div>
+        </a>
+      </div>
+    </div>
   );
 }
