@@ -1,10 +1,5 @@
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import { Grid, IconButton } from '@mui/material';
-import Link from './Link';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function SlimSolidLine() {
   return (
@@ -27,30 +22,20 @@ export default function Footer() {
         <div>
             <SlimSolidLine />
 
-            <Grid>
+            <div>
                 <Link href='https://github.com/dangchinh25'>
-                    <IconButton size='large'>
-                        <GitHubIcon />
-                    </IconButton>
+                    github
                 </Link>
                 <Link href='https://www.youtube.com/channel/UCu5VfUF_Tdv9EJP5YORfMzg'>
-                    <IconButton
-                        size='large'
-                    >
-                        <YouTubeIcon />
-                    </IconButton>
+                    Youtube
                 </Link>
                 <Link href='https://www.linkedin.com/in/chinh-d-le/'>
-                    <IconButton size='large'>
-                        <LinkedInIcon />
-                    </IconButton>
+                   Linkedin
                 </Link>
                 <Link href='https://www.instagram.com/dangg_chinh/'>
-                    <IconButton size='large'>
-                        <InstagramIcon />
-                    </IconButton>
+                   Instagram
                 </Link>
-            </Grid>
+            </div>
             
             <div
                 style={{

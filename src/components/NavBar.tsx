@@ -1,16 +1,16 @@
-import Link from './Link';
+import Link from 'next/link';
 
 export default function Navbar() {
   return (
     <div>
       <button>
-        <Link href='/' underline='none'>
-          <a>About</a>
+        <Link href='/'>
+          About
         </Link>
       </button>
       <button>
-        <Link href='https://wiki.chinhle.me' underline='none'>
-          <a>Wiki</a>
+        <Link href='https://wiki.chinhle.me'>
+          Wiki
         </Link>
       </button>
     </div>
