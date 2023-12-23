@@ -25,6 +25,9 @@
       2,
       2
     ],
+    "react/no-unescaped-entities": [
+      "warn"
+    ],
     "quotes": [
       "error",
       "single",
