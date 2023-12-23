@@ -1,12 +1,7 @@
-import Navbar from '@/components/NavBar';
-import Footer from '@/components/Footer';
-
-
 export default function HomePage() {
   return (
     <div>
       <div>
-        <Navbar />
         <p>
           I love making and sharing things.
         </p>
@@ -16,7 +11,6 @@ export default function HomePage() {
         <p>
           Feel free to ask me anything.
         </p>
-        <Footer />
       </div>
     </div>
   );
