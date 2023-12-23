@@ -1,41 +1,17 @@
-'use client'
-import * as React from 'react';
-import Typography from '@mui/material/Typography';
-import { Container } from '@mui/material';
-import {makeStyles} from '@mui/styles'
-import Navbar from '@/components/NavBar';
-import Footer from '@/components/Footer';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    justifyContent: 'center'
-  },
-  container: {
-    width: '40%'
-  }
-}))
-
 export default function HomePage() {
-  const classes = useStyles()
-
   return (
-    <div className={classes.root}>
-      <Container className={classes.container}>
-        <Navbar />
-        
-        <Typography>
+    <div>
+      <div>
+        <p>
           I love making and sharing things.
-        </Typography>
-        <Typography>
+        </p>
+        <p>
           I share everything I know in form of a personal documentation here.
-        </Typography>
-        <Typography>
+        </p>
+        <p>
           Feel free to ask me anything.
-        </Typography>
-
-        <Footer />
-      </Container>
+        </p>
+      </div>
     </div>
   );
 }
