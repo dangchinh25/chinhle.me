@@ -1,5 +1,7 @@
-import Image from 'next/image';
+/* eslint-disable import/no-extraneous-dependencies */
 import Link from 'next/link';
+import { FaGithub, FaLinkedin } from 'react-icons/fa6';
+import { FaYoutube, FaInstagram } from 'react-icons/fa';
 
 function SlimSolidLine() {
   return (
@@ -22,36 +24,19 @@ export default function Footer() {
     <div>
       <SlimSolidLine />
 
-      <div>
+      <div className='flex flex-row justify-evenly text-2xl text-richBlack' >
         <Link href='https://github.com/dangchinh25'>
-          github
+          <FaGithub />
         </Link>
         <Link href='https://www.youtube.com/channel/UCu5VfUF_Tdv9EJP5YORfMzg'>
-          Youtube
+          <FaYoutube />
         </Link>
         <Link href='https://www.linkedin.com/in/chinh-d-le/'>
-          Linkedin
+          <FaLinkedin />
         </Link>
         <Link href='https://www.instagram.com/dangg_chinh/'>
-          Instagram
+          <FaInstagram />
         </Link>
-      </div>
-            
-      <div
-                style={{
-                  width: '5%',
-                  marginTop: '20px',
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                }}
-            >
-        <a href='https://github.com/dangchinh25'>
-          <Image 
-                        src='/Subject.png'
-                        alt='memoji'
-                        width='100'
-                        height='75'/>
-        </a>
       </div>
     </div>
   );
