@@ -4,17 +4,13 @@ import NavbarButton from './NavBarButton';
 
 export default function Navbar() {
   return (
-    <div className='shadow-md w-full h-10 rounded mb-5 flex flex-row justify-end px-2'>
+    <div className='shadow-md w-full h-10 rounded mb-5 flex flex-row justify-end'>
       <NavbarButton className='mr-auto'>
         <Link href='/'>
           About
         </Link>
       </NavbarButton>
-      <NavbarButton className=''>
-        <Link href='https://wiki.chinhle.me'>
-          Wiki
-        </Link>
-      </NavbarButton>
+    
       <NavbarButton>
         <Link href='/projects'>
           Projects
@@ -23,6 +19,11 @@ export default function Navbar() {
       <NavbarButton>
         <Link href='likes'>
           Likes
+        </Link>
+      </NavbarButton>
+      <NavbarButton className=''>
+        <Link href='https://wiki.chinhle.me'>
+          Wiki
         </Link>
       </NavbarButton>
     </div>

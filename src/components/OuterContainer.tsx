@@ -7,7 +7,7 @@ export type Props = {
 
 export default function OuterContainer({ children }: Props) {
   return (
-    <div className='flex flex-row justify-center w-screen h-screen bg-platinum'>
+    <div className='flex flex-row justify-center w-screen h-screen bg-platinum text-richBlack'>
       <div className='w-3/6'>
         <Navbar />
         <div className='px-2'>
