@@ -5,27 +5,26 @@ import NavbarButton from './NavBarButton';
 export default function Navbar() {
   return (
     <div className='shadow-md w-full h-10 rounded mb-5 flex flex-row justify-end'>
-      <NavbarButton className='mr-auto'>
-        <Link href='/'>
+      <Link className='mr-auto' href='/'>
+        <NavbarButton>
           About
-        </Link>
-      </NavbarButton>
-    
-      <NavbarButton>
-        <Link href='/projects'>
+        </NavbarButton>
+      </Link>
+      <Link href='/projects'>
+        <NavbarButton>
           Projects
-        </Link>
-      </NavbarButton>
-      <NavbarButton>
-        <Link href='likes'>
+        </NavbarButton>
+      </Link>
+      <Link href='likes'>
+        <NavbarButton>
           Likes
-        </Link>
-      </NavbarButton>
-      <NavbarButton className=''>
-        <Link href='https://wiki.chinhle.me'>
+        </NavbarButton>
+      </Link>
+      <Link href='https://wiki.chinhle.me'>
+        <NavbarButton className=''>
           Wiki
-        </Link>
-      </NavbarButton>
+        </NavbarButton>
+      </Link>
     </div>
   );
 }
