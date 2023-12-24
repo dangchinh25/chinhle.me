@@ -5,8 +5,8 @@ import { LINK } from '@/const';
 
 export default function Navbar() {
   return (
-    <div className='shadow-md w-full h-10 rounded mb-5 flex flex-row justify-end'>
-      <Link className='mr-auto' href='/'>
+    <div className='shadow-md w-full md:h-10 rounded mb-5 flex flex-col md:flex-row justify-end'>
+      <Link className='md:mr-auto' href='/'>
         <NavbarButton>
           About
         </NavbarButton>
