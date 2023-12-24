@@ -1,17 +1,25 @@
 'use client';
+import SubmitButton from '@/components/SubmitButton';
 /* eslint-disable import/no-extraneous-dependencies */
 import { SendEmailData } from '@/types';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 export default function ContactPage() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isSendEmailSuccess, setIsSendEmailSuccess] = useState<boolean | null>(null);
   const { register, handleSubmit } = useForm<SendEmailData>();
 
   const onSubmit = async (data: SendEmailData)=> {
-    console.log(data);
-
+    setIsLoading(true);
     const res = await fetch('/api/email', { method: 'POST', body: JSON.stringify(data) });
-  
-    console.log(res);
+    setIsLoading(false);
+
+    if (res.status === 200) {
+      setIsSendEmailSuccess(true);
+    } else {
+      setIsSendEmailSuccess(false);
+    }
   };
 
   return (
@@ -57,11 +65,15 @@ export default function ContactPage() {
           {...register('message', { required: true })}
         ></textarea>
         </div>
-        <div className='flex flex-row justify-center'>
-          <button className='hover:bg-silverLakeBlue rounded-md bg-yInMnBlue py-3 px-8 text-base font-semibold text-platinum outline-none'>
-            Submit
-          </button>
+        <div className='flex flex-row justify-center mb-5'>
+          <SubmitButton isLoading={isLoading} isSuccess={isSendEmailSuccess}/>
         </div>
+        
+        { isSendEmailSuccess !== null 
+          && !isSendEmailSuccess
+          && <div className='flex flex-row justify-center'>
+            <p className='text-silverLakeBlue'>Failed to send message, please try again later.</p>
+          </div>}
       </form>
     </div>
   );
