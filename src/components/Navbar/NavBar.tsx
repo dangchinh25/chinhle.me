@@ -16,15 +16,20 @@ export default function Navbar() {
           Projects
         </NavbarButton>
       </Link>
-      <Link href='likes'>
+      <Link href='/likes'>
         <NavbarButton>
           Likes
         </NavbarButton>
       </Link>
       <Link href={LINK.WIKI}>
-        <NavbarButton className=''>
+        <NavbarButton>
           Wiki
         </NavbarButton>
+      </Link>
+      <Link href='/now'>
+        <NavbarButton>
+          Now
+        </NavbarButton> 
       </Link>
     </div>
   );
