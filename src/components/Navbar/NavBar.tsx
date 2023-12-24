@@ -31,6 +31,11 @@ export default function Navbar() {
           Now
         </NavbarButton> 
       </Link>
+      <Link href='/contact'>
+        <NavbarButton>
+          Contact
+        </NavbarButton> 
+      </Link>
     </div>
   );
 }
