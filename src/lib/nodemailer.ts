@@ -26,6 +26,6 @@ export const sendMail = async (params: SendMailParams) => {
   };
 
   const sendMailResult = await transport.sendMail(mailOptions);
-
+    
   return sendMailResult;
 };
