@@ -1,19 +1,18 @@
 'use client';
 /* eslint-disable import/no-extraneous-dependencies */
+import { SendEmailData } from '@/types';
 import { useForm } from 'react-hook-form';
 
-export type FormData = {
-  name: string;
-  email: string;
-  message: string;
-};
-
 export default function ContactPage() {
-  const { register, handleSubmit } = useForm<FormData>();
+  const { register, handleSubmit } = useForm<SendEmailData>();
 
-  function onSubmit(data: FormData) {
+  const onSubmit = async (data: SendEmailData)=> {
     console.log(data);
-  }
+
+    const res = await fetch('/api/email', { method: 'POST', body: JSON.stringify(data) });
+  
+    console.log(res);
+  };
 
   return (
     <div className='flex flex-row justify-center'>
