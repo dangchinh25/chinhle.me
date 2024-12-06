@@ -1,38 +1,82 @@
-import InlineLink from '@/components/InlineLink';
-import TextEntry from '@/components/TextEntry';
-import { LINK } from '@/const';
+import { Nav } from '@/components/nav';
+import { SocialLinks } from '@/components/social-links';
+import Link from 'next/link';
+import { LINK } from '@/const'; // Import the LINK object
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <div>
-      <TextEntry>
-        I love making and sharing things.
-      </TextEntry>
-      <TextEntry>
-        I mostly speak English and Vietnamese, sometimes Typescript.
-      </TextEntry>
-      <TextEntry>
-        My main focus is making cool software tools that help making my day to day life easier, thus enables me to build even more 
-        cool stuff or just to have fun with technology. You can see my existing projects <InlineLink to='/projects' displayText='here' />.
-      </TextEntry>
-      <TextEntry>
-        Currently exploring the idea of <b>Second Brain </b> 
-        and <b>Digital Garden</b>. I share everything I know <InlineLink to={LINK.WIKI} displayText='here'/>.
-      </TextEntry>
-      <TextEntry>
-        I'm also into photography and videography, you can checkout my photos on <InlineLink to={LINK.INSTAGRAM} displayText='Instagram' /> or
-        watch my videos on <InlineLink to={LINK.YOUTUBE} displayText='Youtube' />.
-      </TextEntry>
-      <TextEntry>
-        If you want to know more about me, you can see <InlineLink to='/likes' displayText='what I like'/>, or <InlineLink to={LINK.WIKI} displayText='explore the wiki'/>.
-      </TextEntry>
-      <TextEntry>
-        I love meeting new people to discuss various topics. Check out my <InlineLink to='/now' displayText='Now page'/> to see where I am right now.
-      </TextEntry>
-      <TextEntry>
-        Feel free to shoot me anything <InlineLink to='/contact' displayText='here'/>, follow me on <InlineLink to={LINK.GITHUB} displayText='Github'/> to see
-        me building more stuff, or connect me on <InlineLink to={LINK.LINKEDIN} displayText='Linkedin' />.
-      </TextEntry>
+    <div className='min-h-screen bg-background text-foreground'>
+      <Nav />
+      <main className='container max-w-2xl py-12'>
+        <div className='prose prose-neutral dark:prose-invert'>
+          <ul className='space-y-4'>
+            <li>I love making and sharing things.</li>
+            <li>I mostly speak English and Vietnamese, sometimes Typescript.</li>
+            <li>
+              My main focus is making cool software tools that help making my day to day life easier, thus enables me to build
+              even more cool stuff or just to have fun with technology. You can see my existing projects{' '}
+              <Link href='/projects' className='underline decoration-primary decoration-dotted'>
+                here
+              </Link>
+              .
+            </li>
+            <li>
+              Currently exploring the idea of{' '}
+              <span className='font-medium'>Second Brain</span> and{' '}
+              <span className='font-medium'>Digital Garden</span>. I share everything I know{' '}
+              <Link href={LINK.WIKI} className='underline decoration-primary decoration-dotted'>
+                here
+              </Link>
+              .
+            </li>
+            <li>
+              I&apos;m also into photography and videography, you can checkout my photos on{' '}
+              <Link href={LINK.INSTAGRAM} className='underline decoration-primary decoration-dotted'>
+                Instagram
+              </Link>{' '}
+              or watch my videos on{' '}
+              <Link href={LINK.YOUTUBE} className='underline decoration-primary decoration-dotted'>
+                Youtube
+              </Link>
+              .
+            </li>
+            <li>
+              If you want to know more about me, you can see{' '}
+              <Link href='/likes' className='underline decoration-primary decoration-dotted'>
+                what I like
+              </Link>
+              , or{' '}
+              <Link href={LINK.WIKI} className='underline decoration-primary decoration-dotted'>
+                explore the wiki
+              </Link>
+              .
+            </li>
+            <li>
+              I love meeting new people to discuss various topics. Check out my{' '}
+              <Link href='/now' className='underline decoration-primary decoration-dotted'>
+                Now page
+              </Link>{' '}
+              to see where I am right now.
+            </li>
+            <li>
+              Feel free to shoot me anything{' '}
+              <Link href='/contact' className='underline decoration-primary decoration-dotted'>
+                here
+              </Link>
+              , follow me on{' '}
+              <Link href={LINK.GITHUB} className='underline decoration-primary decoration-dotted'>
+                Github
+              </Link>{' '}
+              to see me building more stuff, or connect me on{' '}
+              <Link href={LINK.LINKEDIN} className='underline decoration-primary decoration-dotted'>
+                Linkedin
+              </Link>
+              .
+            </li>
+          </ul>
+        </div>
+        <SocialLinks />
+      </main>
     </div>
   );
 }

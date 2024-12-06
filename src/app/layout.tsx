@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
 import OuterContainer from '@/components/OuterContainer';
+import { ThemeProvider } from '@/components/ui/theme-provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,13 +16,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='en'>
-      <body className={`${inter.className} bg-platinum`}>
-        <OuterContainer>
+    <html lang='en' suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
-        </OuterContainer>
-        <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );
 }
+

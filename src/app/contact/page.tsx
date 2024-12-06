@@ -3,7 +3,23 @@ import SubmitButton from '@/components/SubmitButton';
 /* eslint-disable import/no-extraneous-dependencies */
 import { SendEmailData } from '@/types';
 import { useState } from 'react';
+import { Nav } from '@/components/nav';
+import { SocialLinks } from '@/components/social-links';
+import { Button } from '@/components/ui/button';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import * as z from 'zod';
+
 
 export default function ContactPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -23,58 +39,61 @@ export default function ContactPage() {
   };
 
   return (
-    <div className='flex flex-row justify-center'>
-      <form onSubmit={handleSubmit(onSubmit)} className='w-11/12'>
-        <div className='mb-5'>
-          <label
-            htmlFor='name'
-            className='mb-3 block text-base font-medium text-richBlack'>
-            Full Name
-          </label>
-          <input
-            type='text'
-            placeholder='Full Name'
-            className='w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-oxfordBlue outline-none focus:border-yInMnBlue focus:shadow-md'
-            {...register('name', { required: true })}/>
-        </div>
-        <div className='mb-5'>
-          <label
-          htmlFor='email'
-          className='mb-3 block text-base font-medium text-richBlack'
-        >
-            Email Address
-          </label>
-          <input
-          type='email'
-          placeholder='example@domain.com'
-          className='w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-oxfordBlue outline-none focus:border-yInMnBlue focus:shadow-md'
-          {...register('email', { required: true })}
-        />
-        </div>
-        <div className='mb-5'>
-          <label
-          htmlFor='message'
-          className='mb-3 block text-base font-medium text-richBlack'
-        >
-            Message
-          </label>
-          <textarea
-          rows={4}
-          placeholder='Type your message'
-          className='w-full resize-none rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-oxfordBlue outline-none focus:border-yInMnBlue focus:shadow-md'
-          {...register('message', { required: true })}
-        ></textarea>
-        </div>
-        <div className='flex flex-row justify-center mb-5'>
-          <SubmitButton isLoading={isLoading} isSuccess={isSendEmailSuccess}/>
-        </div>
-        
-        { isSendEmailSuccess !== null 
-          && !isSendEmailSuccess
-          && <div className='flex flex-row justify-center'>
-            <p className='text-silverLakeBlue'>Failed to send message, please try again later.</p>
-          </div>}
-      </form>
+    <div className='min-h-screen bg-background text-foreground'>
+      <Nav />
+      <main className='container max-w-2xl py-12'>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6'>
+            <FormField
+            control={form.control}
+            name='fullName'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Full Name</FormLabel>
+                <FormControl>
+                  <Input placeholder='Full Name' {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+            <FormField
+            control={form.control}
+            name='email'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email Address</FormLabel>
+                <FormControl>
+                  <Input placeholder='example@domain.com' type='email' {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+            <FormField
+            control={form.control}
+            name='message'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Message</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder='Type your message'
+                    className='min-h-[150px] resize-none'
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+            <Button type='submit' className='w-full'>
+              Submit
+            </Button>
+          </form>
+        </Form>
+        <SocialLinks />
+      </main>
     </div>
   );
 }
