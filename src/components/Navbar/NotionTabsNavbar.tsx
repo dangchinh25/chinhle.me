@@ -32,6 +32,7 @@ export default function NotionTabsNavbar() {
                 'bg-notion-bg text-notion-text-secondary hover:bg-notion-gray-light hover:text-notion-text',
                 activeTab === tab.key && 'bg-white text-notion-text font-semibold shadow-sm',
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-notion-accent focus:z-20',
+                'border-r border-notion-border',
               )}
               asChild
             >
