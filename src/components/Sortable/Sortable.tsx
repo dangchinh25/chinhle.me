@@ -29,8 +29,18 @@ export const SortableItem = ({ id, element }: SortableItemProps) => {
     };
 
     return (
-        <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-            {element}
+        <div ref={setNodeRef} style={style} className="relative group">
+            {/* Drag handle - only this area will respond to drag events */}
+            <div
+                {...attributes}
+                {...listeners}
+                className="absolute left-0 top-0 w-6 h-full flex items-center justify-center cursor-grab active:cursor-grabbing opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                style={{ marginLeft: "-24px" }}
+            >
+                <div className="w-1 h-8 bg-gray-300 rounded-full hover:bg-gray-400 transition-colors"></div>
+            </div>
+            {/* The actual content - no drag listeners here */}
+            <div className="w-full">{element}</div>
         </div>
     );
 };
