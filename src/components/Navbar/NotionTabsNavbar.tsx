@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import * as React from "react";
 
 import * as Tabs from "@radix-ui/react-tabs";
@@ -17,13 +18,24 @@ const tabs = [
     { key: "contact", label: "Contact", href: "/contact" },
 ];
 
-export default function NotionTabsNavbar() {
-    // Optionally, you could sync this with the current route
-    const [activeTab, setActiveTab] = React.useState("about");
+export const NotionTabsNavbar = () => {
+    const pathname = usePathname();
+
+    // Function to determine the active tab based on current pathname
+    const getActiveTab = () => {
+        // Handle root path
+        if (pathname === "/") return "about";
+
+        // Handle other paths
+        const tab = tabs.find((tab) => tab.href === pathname);
+        return tab ? tab.key : "about";
+    };
+
+    const activeTab = getActiveTab();
 
     return (
         <div className="w-full flex items-center">
-            <Tabs.Root value={activeTab} onValueChange={setActiveTab} className="flex-1">
+            <Tabs.Root value={activeTab} className="flex-1">
                 <Tabs.List className="flex flex-row gap-0">
                     {tabs.map((tab) => (
                         <Tabs.Trigger
@@ -47,4 +59,4 @@ export default function NotionTabsNavbar() {
             </Tabs.Root>
         </div>
     );
-}
+};
