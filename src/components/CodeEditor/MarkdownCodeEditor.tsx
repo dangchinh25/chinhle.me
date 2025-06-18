@@ -1,37 +1,29 @@
-'use client';
+"use client";
 
-import { markdown, markdownLanguage } from '@codemirror/lang-markdown';
-import CodeMirror, { EditorView } from '@uiw/react-codemirror';
-import { languages } from '@codemirror/language-data';
+import { useMemo } from "react";
 
-
-import { useMemo } from 'react';
-
+import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
+import { languages } from "@codemirror/language-data";
+import CodeMirror, { EditorView } from "@uiw/react-codemirror";
 
 export const MarkdownCodeEditor = () => {
-  const staticMarkdownExtensions = useMemo(() => {
-    return [
-      EditorView.lineWrapping,
-      markdown({
-        base: markdownLanguage,
-        codeLanguages: languages,
-      }),
-    ];
-  }, []);
+    const staticMarkdownExtensions = useMemo(() => {
+        return [
+            EditorView.lineWrapping,
+            markdown({
+                base: markdownLanguage,
+                codeLanguages: languages,
+            }),
+        ];
+    }, []);
 
-  const markdownExtensions = useMemo(() => {
-    return [
-      ...staticMarkdownExtensions,
-    ];
-  }, [staticMarkdownExtensions]);
+    const markdownExtensions = useMemo(() => {
+        return [...staticMarkdownExtensions];
+    }, [staticMarkdownExtensions]);
 
-
-  return (
-    <div className='border rounded-md'>
-      <CodeMirror 
-        height='200px'
-        extensions={markdownExtensions}
-      />
-    </div>
-  );
+    return (
+        <div className="border rounded-md">
+            <CodeMirror height="200px" extensions={markdownExtensions} />
+        </div>
+    );
 };

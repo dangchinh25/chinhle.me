@@ -1,7 +1,5 @@
-import NotionTabsNavbar from './NotionTabsNavbar';
+import NotionTabsNavbar from "./NotionTabsNavbar";
 
 export default function Navbar() {
-  return <NotionTabsNavbar />;
+    return <NotionTabsNavbar />;
 }
-
-
