@@ -1,7 +1,8 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 import { autocompletion } from "@codemirror/autocomplete";
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
@@ -16,6 +17,7 @@ export type MarkdownCodeEditorProps = ComponentProps<typeof CodeMirror>;
 export const MarkdownCodeEditor: FC<MarkdownCodeEditorProps> = (props) => {
     const editorViewRef = useRef<EditorView | null>(null);
     const { ...codeMirrorProps } = props;
+    const [stringValue, setStringValue] = useState<string>(codeMirrorProps.value ?? "");
 
     const staticMarkdownExtensions = useMemo<Extension[]>(() => {
         return [
@@ -48,18 +50,30 @@ export const MarkdownCodeEditor: FC<MarkdownCodeEditorProps> = (props) => {
     };
 
     return (
-        <CodeMirror
-            theme={editorTheme}
-            extensions={extensions}
-            basicSetup={{
-                lineNumbers: false,
-                foldGutter: false,
-            }}
-            onCreateEditor={(view) => {
-                editorViewRef.current = view;
-            }}
-            onClick={onClickHandle}
-            {...codeMirrorProps}
-        />
+        <div>
+            <CodeMirror
+                theme={editorTheme}
+                extensions={extensions}
+                basicSetup={{
+                    lineNumbers: false,
+                    foldGutter: false,
+                }}
+                onCreateEditor={(view) => {
+                    editorViewRef.current = view;
+                }}
+                onClick={onClickHandle}
+                value={stringValue}
+                onChange={(value) => {
+                    setStringValue(value);
+                }}
+                {...codeMirrorProps}
+            />
+            {stringValue.trim() && (
+                <div className="mt-4 p-4 bg-notion-bg-subtle rounded-lg border">
+                    <div className="mb-2 text-sm text-notion-text-secondary">Preview:</div>
+                    <ReactMarkdown>{stringValue}</ReactMarkdown>
+                </div>
+            )}
+        </div>
     );
 };

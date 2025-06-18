@@ -39,7 +39,7 @@ const AboutPage = () => {
                 more stuff, or connect me on{" "}
                 <InlineLink to={LINK.LINKEDIN} displayText="Linkedin" />.
             </TextEntry>
-            <MarkdownCodeEditor />
+            <MarkdownCodeEditor value="I love making and sharing things." />
         </div>
     );
 };
