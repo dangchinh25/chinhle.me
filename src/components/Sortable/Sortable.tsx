@@ -11,6 +11,7 @@ import {
     verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { GripVertical } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
 
 type SortableItemProps = {
@@ -37,7 +38,7 @@ export const SortableItem = ({ id, element }: SortableItemProps) => {
                 className="absolute left-0 top-0 w-6 h-full flex items-center justify-center cursor-grab active:cursor-grabbing opacity-0 group-hover:opacity-100 transition-opacity z-10"
                 style={{ marginLeft: "-24px" }}
             >
-                <div className="w-1 h-8 bg-gray-300 rounded-full hover:bg-gray-400 transition-colors"></div>
+                <GripVertical className="w-4 h-4 text-gray-400 hover:text-gray-600 transition-colors" />
             </div>
             {/* The actual content - no drag listeners here */}
             <div className="w-full">{element}</div>
