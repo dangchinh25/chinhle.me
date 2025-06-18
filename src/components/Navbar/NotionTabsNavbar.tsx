@@ -20,7 +20,7 @@ export default function NotionTabsNavbar() {
   const [activeTab, setActiveTab] = React.useState('about');
 
   return (
-    <div className='w-full bg-notion-bg border-b border-notion-border flex items-center'>
+    <div className='w-full border-b border-notion-border flex items-center'>
       <Tabs.Root value={activeTab} onValueChange={setActiveTab} className='flex-1'>
         <Tabs.List className='flex flex-row gap-0'>
           {tabs.map(tab => (
@@ -29,8 +29,10 @@ export default function NotionTabsNavbar() {
               value={tab.key}
               className={cn(
                 'flex items-center px-5 py-3 min-w-[90px] text-sm font-medium transition-colors',
-                'bg-notion-bg text-notion-text-secondary hover:bg-notion-gray-light hover:text-notion-text',
-                activeTab === tab.key && 'bg-white text-notion-text font-semibold shadow-sm',
+                'bg-transparent text-notion-text-secondary',
+                activeTab === tab.key 
+                  ? 'bg-notion-bg text-notion-text font-semibold shadow-sm cursor-default'
+                  : 'hover:bg-notion-gray-light hover:text-notion-text cursor-pointer',
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-notion-accent focus:z-20',
                 'border-r border-notion-border',
               )}
