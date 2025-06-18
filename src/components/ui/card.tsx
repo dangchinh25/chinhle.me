@@ -8,7 +8,7 @@ React.HTMLAttributes<HTMLDivElement>
   <div
     ref={ref}
     className={cn(
-      'rounded-lg border border-notion-border bg-notion-bg text-notion-text shadow-notion',
+      'rounded-lg border bg-notion-bg text-notion-text shadow-notion',
       className,
     )}
     {...props}

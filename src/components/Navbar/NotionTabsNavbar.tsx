@@ -34,7 +34,7 @@ export default function NotionTabsNavbar() {
                   ? 'bg-notion-bg text-notion-text font-semibold shadow-sm cursor-default'
                   : 'hover:bg-notion-gray-light hover:text-notion-text cursor-pointer',
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-notion-accent focus:z-20',
-                'border-r border-notion-border',
+                'border-r',
               )}
               asChild
             >
