@@ -1,5 +1,5 @@
-import NotionTabsNavbar from "./NotionTabsNavbar";
+import { NotionTabsNavbar } from "./NotionTabsNavbar";
 
-export default function Navbar() {
+export const Navbar = () => {
     return <NotionTabsNavbar />;
-}
+};
