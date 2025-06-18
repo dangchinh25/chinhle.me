@@ -10,7 +10,6 @@ import {
     useSortable,
     verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
 import { GripVertical } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
 
@@ -25,7 +24,7 @@ export const SortableItem = ({ id, element }: SortableItemProps) => {
     });
 
     const style = {
-        transform: CSS.Transform.toString(transform),
+        transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
         transition,
     };
 
