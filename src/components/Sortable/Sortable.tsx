@@ -11,6 +11,7 @@ import {
     verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { v4 as uuidv4 } from "uuid";
 
 type SortableItemProps = {
     id: string;
@@ -35,11 +36,16 @@ export const SortableItem = ({ id, element }: SortableItemProps) => {
 };
 
 type SortableProps = {
-    items: SortableItemProps[];
+    items: React.ReactNode[];
 };
 
 export const Sortable = (props: SortableProps) => {
-    const [items, setItems] = useState<SortableItemProps[]>(props.items);
+    const [items, setItems] = useState<SortableItemProps[]>(
+        props.items.map((item) => ({
+            id: uuidv4(),
+            element: item,
+        })),
+    );
     const { setNodeRef } = useDroppable({
         id: "droppable::sortable",
     });
