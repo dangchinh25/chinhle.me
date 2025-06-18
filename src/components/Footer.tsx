@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import { FaGithub, FaLinkedin } from 'react-icons/fa6';
 import { FaYoutube, FaInstagram } from 'react-icons/fa';
-import { Separator } from '@/components/ui/separator';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { LINK } from '@/const';
 import { IconType } from 'react-icons';
@@ -28,8 +27,7 @@ const SocialLink = ({ href, icon: Icon, label }: { href: string; icon: IconType;
 export default function Footer() {
   return (
     <TooltipProvider>
-      <div className='px-6 py-6'>
-        <Separator className='mb-6' />
+      <div className='px-2 py-2'>
         <div className='flex flex-row justify-center gap-6 text-xl text-notion-text-secondary'>
           <SocialLink href={LINK.GITHUB} icon={FaGithub} label='GitHub' />
           <SocialLink href={LINK.YOUTUBE} icon={FaYoutube} label='YouTube' />
