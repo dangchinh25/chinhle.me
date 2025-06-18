@@ -1,3 +1,4 @@
+import { MarkdownCodeEditor } from '@/components/CodeEditor/MarkdownCodeEditor';
 import InlineLink from '@/components/InlineLink';
 import TextEntry from '@/components/TextEntry';
 import { LINK } from '@/const';
@@ -33,6 +34,7 @@ export default function HomePage() {
         Feel free to shoot me anything <InlineLink to='/contact' displayText='here'/>, follow me on <InlineLink to={LINK.GITHUB} displayText='Github'/> to see
         me building more stuff, or connect me on <InlineLink to={LINK.LINKEDIN} displayText='Linkedin' />.
       </TextEntry>
+      <MarkdownCodeEditor />
     </div>
   );
 }
