@@ -14,6 +14,29 @@ import { editorTheme } from "./editorTheme";
 
 export type MarkdownCodeEditorProps = ComponentProps<typeof CodeMirror>;
 
+// Custom link component to display URLs more explicitly
+const CustomLink = ({
+    href,
+    children,
+    ...props
+}: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+    if (!href) return <a {...props}>{children}</a>;
+
+    return (
+        <span className="inline-flex items-center gap-1">
+            <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-notion-accent hover:text-notion-accent-hover underline decoration-notion-accent/30 hover:decoration-notion-accent transition-all duration-200"
+                {...props}
+            >
+                {children}
+            </a>
+        </span>
+    );
+};
+
 export const MarkdownCodeEditor: FC<MarkdownCodeEditorProps> = (props) => {
     const editorViewRef = useRef<EditorView | null>(null);
     const { value: externalValue, onChange: externalOnChange, ...codeMirrorProps } = props;
@@ -92,6 +115,14 @@ export const MarkdownCodeEditor: FC<MarkdownCodeEditorProps> = (props) => {
         }, 10);
     };
 
+    // Custom components for ReactMarkdown
+    const markdownComponents = useMemo(
+        () => ({
+            a: CustomLink,
+        }),
+        [],
+    );
+
     return (
         <div>
             {isTyping ? (
@@ -118,7 +149,9 @@ export const MarkdownCodeEditor: FC<MarkdownCodeEditorProps> = (props) => {
                     onClick={onClickHandle}
                 >
                     {stringValue.trim() ? (
-                        <ReactMarkdown>{processedMarkdown}</ReactMarkdown>
+                        <ReactMarkdown components={markdownComponents}>
+                            {processedMarkdown}
+                        </ReactMarkdown>
                     ) : (
                         <div className="text-notion-text-secondary italic">
                             Click to start typing...
