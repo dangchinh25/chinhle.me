@@ -20,7 +20,7 @@ export default function NotionTabsNavbar() {
   const [activeTab, setActiveTab] = React.useState('about');
 
   return (
-    <div className='w-full border-b border-notion-border flex items-center'>
+    <div className='w-full flex items-center'>
       <Tabs.Root value={activeTab} onValueChange={setActiveTab} className='flex-1'>
         <Tabs.List className='flex flex-row gap-0'>
           {tabs.map(tab => (

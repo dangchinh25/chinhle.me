@@ -28,8 +28,8 @@ module.exports = {
         'notion-accent': '#2e75cc',
         'notion-accent-hover': '#1e5bb8',
         'notion-gray': '#9b9a97',
-        'notion-gray-light': '#f1f1ef',
-        'notion-gray-subtle': '#f8f8f8',
+        'notion-gray-light': '#f0f0ef',
+        'notion-gray-subtle': '#f8f8f7',
         'notion-gray-dark': '#6b6b6b',
         // Additional subtle gray scale
         'gray-25': '#fcfcfc',
