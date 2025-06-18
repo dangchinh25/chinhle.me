@@ -1,7 +1,5 @@
 "use client";
 
-import { DndContext } from "@dnd-kit/core";
-
 import Footer from "./Footer";
 import { Navbar } from "./Navbar/NavBar";
 
@@ -17,9 +15,7 @@ const OuterContainer = ({ children }: Props) => {
                     <div className="bg-notion-gray-subtle">
                         <Navbar />
                     </div>
-                    <div className="px-6 py-8 bg-notion-bg">
-                        <DndContext>{children}</DndContext>
-                    </div>
+                    <div className="px-6 py-8 bg-notion-bg">{children}</div>
                     <div className="bg-notion-gray-subtle border-t">
                         <Footer />
                     </div>

@@ -1,15 +1,39 @@
 "use client";
 
-import { useDraggable, useDroppable } from "@dnd-kit/core";
+import { useState } from "react";
+
+import type { DragEndEvent } from "@dnd-kit/core";
+import { DndContext, useDroppable } from "@dnd-kit/core";
+import {
+    arrayMove,
+    SortableContext,
+    useSortable,
+    verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 import { MarkdownCodeEditor } from "@/components/CodeEditor/MarkdownCodeEditor";
 import { LINK } from "@/const";
 
 const AboutPage = () => {
+    const [items, setItems] = useState<string[]>(["1", "2", "3", "4", "5", "6", "7"]);
+
     const { setNodeRef } = useDroppable({
         id: "about::droppable",
     });
+
+    const handleDragEnd = (event: DragEndEvent) => {
+        const { active, over } = event;
+
+        if (active.id !== over?.id && over) {
+            setItems((items) => {
+                const oldIndex = items.indexOf(active.id as string);
+                const newIndex = items.indexOf(over.id as string);
+
+                return arrayMove(items, oldIndex, newIndex);
+            });
+        }
+    };
 
     return (
         <div ref={setNodeRef}>
@@ -31,28 +55,32 @@ const AboutPage = () => {
             <MarkdownCodeEditor
                 value={`Feel free to shoot me anything [here](./contact), follow me on [Github](${LINK.GITHUB}) to see me building more stuff, or connect me on [Linkedin](${LINK.LINKEDIN}).`}
             />
-            <Draggable />
+            <DndContext onDragEnd={handleDragEnd}>
+                <SortableContext items={items} strategy={verticalListSortingStrategy}>
+                    {items.map((item) => (
+                        <SortableItem key={item} id={item} />
+                    ))}
+                </SortableContext>
+            </DndContext>
         </div>
     );
 };
 
 export default AboutPage;
 
-const Draggable = () => {
-    const { attributes, listeners, setNodeRef, transform } = useDraggable({
-        id: "draggable",
+const SortableItem = ({ id }: { id: string }) => {
+    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+        id,
     });
 
-    // Within your component that receives `transform` from `useDraggable`:
     const style = {
-        transform: CSS.Translate.toString(transform),
+        transform: CSS.Transform.toString(transform),
+        transition,
     };
 
     return (
-        <div ref={setNodeRef} style={style}>
-            <button {...listeners} {...attributes}>
-                Drag me
-            </button>
+        <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+            Drag me {id}
         </div>
     );
 };
