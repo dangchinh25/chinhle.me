@@ -19,6 +19,11 @@ export const MarkdownCodeEditor: FC<MarkdownCodeEditorProps> = (props) => {
     const { ...codeMirrorProps } = props;
     const [stringValue, setStringValue] = useState<string>(codeMirrorProps.value ?? "");
 
+    // Process markdown to handle single line breaks
+    const processedMarkdown = useMemo(() => {
+        return stringValue.replace(/\n(?!\n)/g, "\n\n");
+    }, [stringValue]);
+
     const staticMarkdownExtensions = useMemo<Extension[]>(() => {
         return [
             EditorView.lineWrapping,
@@ -71,7 +76,7 @@ export const MarkdownCodeEditor: FC<MarkdownCodeEditorProps> = (props) => {
             {stringValue.trim() && (
                 <div className="mt-4 p-4 bg-notion-bg-subtle rounded-lg border">
                     <div className="mb-2 text-sm text-notion-text-secondary">Preview:</div>
-                    <ReactMarkdown>{stringValue}</ReactMarkdown>
+                    <ReactMarkdown>{processedMarkdown}</ReactMarkdown>
                 </div>
             )}
         </div>
