@@ -3,7 +3,7 @@ import InlineLink from "@/components/InlineLink";
 import TextEntry from "@/components/TextEntry";
 import { LINK } from "@/const";
 
-export default function HomePage() {
+const AboutPage = () => {
     return (
         <div>
             <TextEntry>I love making and sharing things.</TextEntry>
@@ -42,4 +42,6 @@ export default function HomePage() {
             <MarkdownCodeEditor />
         </div>
     );
-}
+};
+
+export default AboutPage;
