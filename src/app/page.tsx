@@ -1,9 +1,18 @@
+"use client";
+
+import { useDraggable, useDroppable } from "@dnd-kit/core";
+import { CSS } from "@dnd-kit/utilities";
+
 import { MarkdownCodeEditor } from "@/components/CodeEditor/MarkdownCodeEditor";
 import { LINK } from "@/const";
 
 const AboutPage = () => {
+    const { setNodeRef } = useDroppable({
+        id: "about::droppable",
+    });
+
     return (
-        <div>
+        <div ref={setNodeRef}>
             <MarkdownCodeEditor value="I love making and sharing things." />
             <MarkdownCodeEditor value="I mostly speak English and Vietnamese, sometimes Typescript." />
             <MarkdownCodeEditor value="My main focus is making cool software tools that help making my day to day life easier, thus enables me to build even more cool stuff or just to have fun with technology. You can see my existing projects [here](./projects)." />
@@ -22,8 +31,28 @@ const AboutPage = () => {
             <MarkdownCodeEditor
                 value={`Feel free to shoot me anything [here](./contact), follow me on [Github](${LINK.GITHUB}) to see me building more stuff, or connect me on [Linkedin](${LINK.LINKEDIN}).`}
             />
+            <Draggable />
         </div>
     );
 };
 
 export default AboutPage;
+
+const Draggable = () => {
+    const { attributes, listeners, setNodeRef, transform } = useDraggable({
+        id: "draggable",
+    });
+
+    // Within your component that receives `transform` from `useDraggable`:
+    const style = {
+        transform: CSS.Translate.toString(transform),
+    };
+
+    return (
+        <div ref={setNodeRef} style={style}>
+            <button {...listeners} {...attributes}>
+                Drag me
+            </button>
+        </div>
+    );
+};

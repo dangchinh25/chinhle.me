@@ -1,3 +1,5 @@
+"use client";
+
 import { DndContext } from "@dnd-kit/core";
 
 import Footer from "./Footer";
