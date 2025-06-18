@@ -1,3 +1,113 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-feature-settings:
+      "liga" 1,
+      "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
+
+  /* Notion-like selection color */
+  ::selection {
+    background-color: rgba(46, 117, 204, 0.2);
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    outline: 2px solid #2e75cc;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Notion-like prose styles */
+  .prose {
+    color: #37352f;
+  }
+
+  .prose p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .prose a {
+    color: #2e75cc;
+    text-decoration: underline;
+    text-decoration-color: rgba(46, 117, 204, 0.3);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .prose a:hover {
+    color: #1e5bb8;
+    text-decoration-color: #2e75cc;
+  }
+
+  .prose strong {
+    font-weight: 600;
+    color: #37352f;
+  }
+
+  .prose em {
+    font-style: italic;
+  }
+
+  /* Notion-like animations */
+  .animate-in {
+    animation: fadeIn 0.2s ease-in-out;
+  }
+
+  .animate-out {
+    animation: fadeOut 0.2s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+  }
+
+  /* Notion-like focus styles */
+  .notion-focus:focus {
+    outline: 2px solid #2e75cc;
+    outline-offset: 2px;
+  }
+
+  /* Notion-like hover effects */
+  .notion-hover {
+    transition: all 0.2s ease-in-out;
+  }
+
+  .notion-hover:hover {
+    background-color: #f1f1ef;
+  }
+}

@@ -2,43 +2,41 @@
 import Link from 'next/link';
 import { FaGithub, FaLinkedin } from 'react-icons/fa6';
 import { FaYoutube, FaInstagram } from 'react-icons/fa';
+import { Separator } from '@/components/ui/separator';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { LINK } from '@/const';
+import { IconType } from 'react-icons';
 
-function SlimSolidLine() {
-  return (
-    <div
-        style={{
-          display: 'block',
-          height: '1px',
-          border: 0,
-          borderTop: '1px solid #ccc',
-          margin: '1em 0',
-          padding: 0,
-        }}
-    >
-    </div>
-  );
-}
+const SocialLink = ({ href, icon: Icon, label }: { href: string; icon: IconType; label: string }) => (
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Link 
+        href={href} 
+        className='hover:text-notion-accent transition-colors duration-200 p-2 rounded-md hover:bg-notion-gray-light'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        <Icon />
+      </Link>
+    </TooltipTrigger>
+    <TooltipContent>
+      <p>{label}</p>
+    </TooltipContent>
+  </Tooltip>
+);
 
 export default function Footer() {
   return (
-    <div>
-      <SlimSolidLine />
-
-      <div className='flex flex-row justify-evenly text-2xl text-richBlack' >
-        <Link href={LINK.GITHUB}>
-          <FaGithub />
-        </Link>
-        <Link href={LINK.YOUTUBE}>
-          <FaYoutube />
-        </Link>
-        <Link href={LINK.LINKEDIN}>
-          <FaLinkedin />
-        </Link>
-        <Link href={LINK.INSTAGRAM}>
-          <FaInstagram />
-        </Link>
+    <TooltipProvider>
+      <div className='px-6 py-6'>
+        <Separator className='mb-6' />
+        <div className='flex flex-row justify-center gap-6 text-xl text-notion-text-secondary'>
+          <SocialLink href={LINK.GITHUB} icon={FaGithub} label='GitHub' />
+          <SocialLink href={LINK.YOUTUBE} icon={FaYoutube} label='YouTube' />
+          <SocialLink href={LINK.LINKEDIN} icon={FaLinkedin} label='LinkedIn' />
+          <SocialLink href={LINK.INSTAGRAM} icon={FaInstagram} label='Instagram' />
+        </div>
       </div>
-    </div>
+    </TooltipProvider>
   );
 }

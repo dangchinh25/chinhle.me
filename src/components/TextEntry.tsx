@@ -1,13 +1,19 @@
+import { cn } from '@/lib/utils';
+
 export type Props = {
-  children: React.ReactNode
+  children: React.ReactNode;
+  className?: string;
 };
 
-export default function TextEntry({ children }: Props) {
+export default function TextEntry({ children, className }: Props) {
   return (
-    <p className='mb-2'>
-      <li>
-        {children}
-      </li>
-    </p>
+    <div className={cn(
+      'mb-6 text-base leading-7 text-notion-text',
+      'prose prose-gray max-w-none',
+      'first:mt-0 last:mb-0',
+      className,
+    )}>
+      {children}
+    </div>
   );
 }

@@ -5,7 +5,7 @@ export default function NowPage() {
   return (
     <div>
       <TextEntry>
-        Buidling AI Agents at <InlineLink to='https://retool.com' displayText='Retool'/>.
+        Building AI Agents at <InlineLink to='https://retool.com' displayText='Retool'/>.
       </TextEntry>
     
     </div>
