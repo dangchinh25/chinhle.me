@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ComponentProps, FC } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
@@ -14,7 +15,7 @@ import { editorTheme } from "./editorTheme";
 
 export type MarkdownCodeEditorProps = ComponentProps<typeof CodeMirror>;
 
-// Custom link component to display URLs more explicitly
+// Custom link component to handle both internal and external links
 const CustomLink = ({
     href,
     children,
@@ -22,6 +23,27 @@ const CustomLink = ({
 }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
     if (!href) return <a {...props}>{children}</a>;
 
+    // Check if it's an internal link (starts with ./ or /)
+    const isInternalLink = href.startsWith("./") || href.startsWith("/");
+
+    if (isInternalLink) {
+        // Convert relative paths to absolute paths for Next.js Link
+        const internalHref = href.startsWith("./") ? href.slice(1) : href;
+
+        return (
+            <span className="inline-flex items-center gap-1">
+                <Link
+                    href={internalHref}
+                    className="text-notion-accent hover:text-notion-accent-hover underline decoration-notion-accent/30 hover:decoration-notion-accent transition-all duration-200"
+                    {...props}
+                >
+                    {children}
+                </Link>
+            </span>
+        );
+    }
+
+    // External link - use regular anchor tag
     return (
         <span className="inline-flex items-center gap-1">
             <a
