@@ -61,7 +61,7 @@ const CustomLink = ({
 
 export const MarkdownCodeEditor: FC<MarkdownCodeEditorProps> = (props) => {
     const editorViewRef = useRef<EditorView | null>(null);
-    const { value: externalValue, onChange: externalOnChange, ...codeMirrorProps } = props;
+    const { value: externalValue, ...codeMirrorProps } = props;
     const [stringValue, setStringValue] = useState<string>(externalValue ?? "");
     const [isTyping, setIsTyping] = useState<boolean>(false);
     const isInitialMount = useRef(true);
@@ -115,11 +115,6 @@ export const MarkdownCodeEditor: FC<MarkdownCodeEditorProps> = (props) => {
     const handleChange = (value: string) => {
         setStringValue(value);
         handleTyping();
-        // Call external onChange if provided
-        if (externalOnChange) {
-            // @ts-expect-error - CodeMirror onChange can accept just the value string
-            externalOnChange(value);
-        }
     };
 
     const handleBlur = () => {
