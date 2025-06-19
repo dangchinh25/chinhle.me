@@ -141,10 +141,10 @@ export const NotionTabsNavbar = () => {
                             value={tab.key}
                             className={cn(
                                 "flex items-center px-3 py-2 w-32 text-sm font-medium transition-colors",
-                                "bg-transparent text-notion-text-secondary",
+                                "bg-transparent text-notion-text-secondary cursor-default",
                                 activeTab === tab.key
-                                    ? "bg-notion-bg text-notion-text font-semibold shadow-sm cursor-default"
-                                    : "hover:bg-notion-gray-light hover:text-notion-text cursor-pointer",
+                                    ? "bg-notion-bg text-notion-text font-semibold shadow-sm"
+                                    : "hover:bg-notion-gray-light hover:text-notion-text",
                                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-notion-accent focus:z-20",
                                 "border-r",
                             )}
@@ -160,7 +160,14 @@ export const NotionTabsNavbar = () => {
                                             closeTab(tab.key);
                                         }}
                                     >
-                                        <div className="p-1 flex items-center justify-center hover:bg-notion-gray-light">
+                                        <div
+                                            className={cn(
+                                                "p-1/2 flex items-center justify-center",
+                                                activeTab === tab.key
+                                                    ? "hover:bg-notion-gray-light"
+                                                    : "hover:bg-notion-gray-subtle",
+                                            )}
+                                        >
                                             <X className=" text-notion-text-secondary" size={18} />
                                         </div>
                                     </div>
