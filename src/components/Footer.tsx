@@ -4,8 +4,7 @@ import type { IconType } from "react-icons";
 import { FaInstagram, FaYoutube } from "react-icons/fa";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
 
-import * as Tooltip from "@radix-ui/react-tooltip";
-
+import { Tooltip } from "@/components/ui/tooltip";
 import { LINK } from "@/const";
 
 const SocialLink = ({
@@ -17,29 +16,16 @@ const SocialLink = ({
     icon: IconType;
     label: string;
 }) => (
-    <Tooltip.Provider delayDuration={0}>
-        <Tooltip.Root>
-            <Tooltip.Trigger asChild>
-                <Link
-                    href={href}
-                    className="transition-colors duration-200 p-2 rounded-md hover:bg-notion-gray-light"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <Icon />
-                </Link>
-            </Tooltip.Trigger>
-            <Tooltip.Portal>
-                <Tooltip.Content
-                    className="bg-notion-gray-light text-notion-text-primary px-3 py-2 rounded-md text-sm shadow-lg border border-notion-gray-light"
-                    sideOffset={5}
-                    side="bottom"
-                >
-                    {label}
-                </Tooltip.Content>
-            </Tooltip.Portal>
-        </Tooltip.Root>
-    </Tooltip.Provider>
+    <Tooltip text={label} side="bottom" sideOffset={5}>
+        <Link
+            href={href}
+            className="transition-colors duration-200 p-2 rounded-md hover:bg-notion-gray-light"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <Icon />
+        </Link>
+    </Tooltip>
 );
 
 export const Footer = () => {
