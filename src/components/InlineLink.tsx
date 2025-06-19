@@ -8,7 +8,7 @@ export type Props = {
     className?: string;
 };
 
-export default function InlineLink({ to, displayText, className }: Props) {
+export const InlineLink = ({ to, displayText, className }: Props) => {
     return (
         <Link
             href={to}
@@ -23,4 +23,4 @@ export default function InlineLink({ to, displayText, className }: Props) {
             {displayText}
         </Link>
     );
-}
+};

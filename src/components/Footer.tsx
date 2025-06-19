@@ -33,7 +33,7 @@ const SocialLink = ({
     </Tooltip>
 );
 
-export default function Footer() {
+export const Footer = () => {
     return (
         <TooltipProvider>
             <div className="px-2 py-2">
@@ -46,4 +46,4 @@ export default function Footer() {
             </div>
         </TooltipProvider>
     );
-}
+};

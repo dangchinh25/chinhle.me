@@ -1,3 +1,5 @@
-export default function ProjectsPage() {
+const ProjectsPage = () => {
     return <div>TBD</div>;
-}
+};
+
+export default ProjectsPage;

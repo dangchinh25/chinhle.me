@@ -1,7 +1,7 @@
-import InlineLink from "@/components/InlineLink";
-import TextEntry from "@/components/TextEntry";
+import { InlineLink } from "@/components/InlineLink";
+import { TextEntry } from "@/components/TextEntry";
 
-export default function NowPage() {
+const NowPage = () => {
     return (
         <div>
             <TextEntry>
@@ -9,4 +9,6 @@ export default function NowPage() {
             </TextEntry>
         </div>
     );
-}
+};
+
+export default NowPage;

@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 
 import { Analytics } from "@vercel/analytics/react";
 
-import OuterContainer from "@/components/OuterContainer";
+import { OuterContainer } from "@/components/OuterContainer";
 
 const inter = Inter({ subsets: ["latin"] });
 

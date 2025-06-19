@@ -2,11 +2,11 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import SubmitButton from "@/components/SubmitButton";
+import { SubmitButton } from "@/components/SubmitButton";
 /* eslint-disable import/no-extraneous-dependencies */
 import type { SendEmailData } from "@/types";
 
-export default function ContactPage() {
+const ContactPage = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isSendEmailSuccess, setIsSendEmailSuccess] = useState<boolean | null>(null);
     const { register, handleSubmit } = useForm<SendEmailData>();
@@ -82,4 +82,6 @@ export default function ContactPage() {
             </form>
         </div>
     );
-}
+};
+
+export default ContactPage;

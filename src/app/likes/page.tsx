@@ -1,3 +1,5 @@
-export default function LikesPage() {
+export const LikesPage = () => {
     return <div>TBD</div>;
-}
+};
+
+export default LikesPage;

@@ -5,7 +5,7 @@ export type Props = {
     className?: string;
 };
 
-export default function TextEntry({ children, className }: Props) {
+export const TextEntry = ({ children, className }: Props) => {
     return (
         <div
             className={cn(
@@ -18,4 +18,4 @@ export default function TextEntry({ children, className }: Props) {
             {children}
         </div>
     );
-}
+};

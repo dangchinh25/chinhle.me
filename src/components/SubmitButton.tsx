@@ -3,7 +3,7 @@ type Props = {
     isSuccess: boolean | null;
 };
 
-export default function SubmitButton({ isLoading, isSuccess }: Props) {
+export const SubmitButton = ({ isLoading, isSuccess }: Props) => {
     return (
         <button
             className="hover:bg-silverLakeBlue rounded-md bg-yInMnBlue py-3 px-8 text-base font-semibold text-platinum outline-none flex flex-row w-44 justify-center disabled:bg-silverLakeBlue"
@@ -42,4 +42,4 @@ export default function SubmitButton({ isLoading, isSuccess }: Props) {
             </span>
         </button>
     );
-}
+};
