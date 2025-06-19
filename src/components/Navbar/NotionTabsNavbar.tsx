@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import * as React from "react";
 
 import * as Tabs from "@radix-ui/react-tabs";
+import { Plus } from "lucide-react";
 
 import { LINK } from "@/const";
 import { cn } from "@/lib/utils";
@@ -35,6 +36,11 @@ export const NotionTabsNavbar = () => {
 
     return (
         <div className="w-full flex items-center">
+            <div className="flex items-center py-3 px-2 cursor-pointer">
+                <div className="p-1 flex items-center justify-center hover:bg-notion-gray-light">
+                    <Plus className=" text-notion-text-secondary" size={18} />
+                </div>
+            </div>
             <Tabs.Root value={activeTab} className="flex-1">
                 <Tabs.List className="flex flex-row gap-0">
                     {tabs.map((tab) => (
