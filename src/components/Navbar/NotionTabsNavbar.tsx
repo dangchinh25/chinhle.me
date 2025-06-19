@@ -46,7 +46,7 @@ export const NotionTabsNavbar = () => {
         if (tab && !openTabs.includes(tab.key)) {
             setOpenTabs([...openTabs, tab.key]);
         }
-    }, [pathname, openTabs]);
+    }, [pathname]);
 
     // Function to open a new tab
     const openTab = (tabKey: string) => {
@@ -64,6 +64,20 @@ export const NotionTabsNavbar = () => {
     // Function to close a tab (except About)
     const closeTab = (tabKey: string) => {
         if (tabKey !== "about") {
+            let targetTabIndex;
+
+            const currentTabIndex = openTabs.indexOf(tabKey);
+            if (currentTabIndex == openTabs.length - 1) {
+                targetTabIndex = currentTabIndex - 1;
+            } else {
+                targetTabIndex = currentTabIndex + 1;
+            }
+
+            const targetTab = tabs.find((t) => t.key === openTabs[targetTabIndex]);
+            if (targetTab) {
+                router.push(targetTab.href);
+            }
+
             setOpenTabs(openTabs.filter((tab) => tab !== tabKey));
         }
     };
