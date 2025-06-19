@@ -34,7 +34,7 @@ const CustomLink = ({
             <span className="inline-flex items-center gap-1">
                 <Link
                     href={internalHref}
-                    className="text-notion-accent hover:text-notion-accent-hover underline decoration-notion-accent/30 hover:decoration-notion-accent transition-all duration-200"
+                    className="text-notion-gray hover:text-notion-gray-dark underline decoration-notion-gray hover:decoration-notion-gray-dark transition-all duration-200"
                     {...props}
                 >
                     {children}
@@ -50,7 +50,7 @@ const CustomLink = ({
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-notion-accent hover:text-notion-accent-hover underline decoration-notion-accent/30 hover:decoration-notion-accent transition-all duration-200"
+                className="text-notion-gray hover:text-notion-gray-dark underline decoration-notion-gray hover:decoration-notion-gray-dark transition-all duration-200"
                 {...props}
             >
                 {children}
