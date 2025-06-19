@@ -11,9 +11,9 @@ export const editorTheme = EditorView.theme({
         background: "transparent",
     },
     "&.cm-editor .cm-scroller": {
-        "min-height": "75px",
         cursor: "text",
         fontFamily: "Inter, system-ui, sans-serif",
+        padding: "0.5rem",
     },
     "&.cm-editor:hover": {
         outline: "none",

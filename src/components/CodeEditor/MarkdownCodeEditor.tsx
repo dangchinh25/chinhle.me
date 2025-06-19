@@ -162,7 +162,7 @@ export const MarkdownCodeEditor: FC<MarkdownCodeEditorProps> = (props) => {
                 />
             ) : (
                 <div
-                    className="p-4 bg-notion-bg-subtle rounded-lg border cursor-pointer hover:bg-notion-bg-subtle/80 transition-colors"
+                    className="p-2 rounded-lg cursor-pointer hover:bg-notion-bg-subtle transition-colors"
                     onClick={onClickHandle}
                 >
                     {stringValue.trim() ? (
