@@ -64,7 +64,7 @@ export const NotionTabsNavbar = () => {
     // Function to close a tab (except About)
     const closeTab = (tabKey: string) => {
         if (tabKey !== "about") {
-            let targetTabIndex;
+            let targetTabIndex: number | undefined;
 
             const currentTabIndex = openTabs.indexOf(tabKey);
             if (currentTabIndex == openTabs.length - 1) {
