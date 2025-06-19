@@ -11,6 +11,8 @@ import { languages } from "@codemirror/language-data";
 import type { Extension } from "@uiw/react-codemirror";
 import CodeMirror, { EditorView } from "@uiw/react-codemirror";
 
+import { Tooltip } from "@/components/ui/tooltip";
+
 import { editorTheme } from "./editorTheme";
 
 export type MarkdownCodeEditorProps = ComponentProps<typeof CodeMirror>;
@@ -45,17 +47,19 @@ const CustomLink = ({
 
     // External link - use regular anchor tag
     return (
-        <span className="inline-flex items-center gap-1">
-            <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-notion-gray hover:text-notion-gray-dark underline decoration-notion-gray hover:decoration-notion-gray-dark transition-all duration-200"
-                {...props}
-            >
-                {children}
-            </a>
-        </span>
+        <Tooltip text={href} side="bottom">
+            <span className="inline-flex items-center gap-1">
+                <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-notion-gray hover:text-notion-gray-dark underline decoration-notion-gray hover:decoration-notion-gray-dark transition-all duration-200"
+                    {...props}
+                >
+                    {children}
+                </a>
+            </span>
+        </Tooltip>
     );
 };
 
