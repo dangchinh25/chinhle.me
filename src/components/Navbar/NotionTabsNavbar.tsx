@@ -73,7 +73,7 @@ export const NotionTabsNavbar = () => {
                 targetTabIndex = currentTabIndex + 1;
             }
 
-            const targetTab = tabs.find((t) => t.key === openTabs[targetTabIndex]);
+            const targetTab = tabs.find((t) => t.key === openTabs[targetTabIndex as number]);
             if (targetTab) {
                 router.push(targetTab.href);
             }
