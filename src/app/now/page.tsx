@@ -5,7 +5,7 @@ const NowPage = () => {
     return (
         <Sortable
             items={[
-                <MarkdownCodeEditor value="Building AI Agents at [Retool](https://retool.com)." />,
+                <MarkdownCodeEditor value="Building AI Agents at [Retool](https://retool.com) in **San Francisco**." />,
             ]}
         />
     );
