@@ -19,13 +19,14 @@ type SortableItemProps = {
 };
 
 export const SortableItem = ({ id, element }: SortableItemProps) => {
-    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+    const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
         id,
     });
 
     const style = {
         transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
         transition,
+        zIndex: isDragging ? 9999 : undefined,
     };
 
     return (
