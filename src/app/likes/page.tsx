@@ -1,4 +1,4 @@
-export const LikesPage = () => {
+const LikesPage = () => {
     return <div>TBD</div>;
 };
 
