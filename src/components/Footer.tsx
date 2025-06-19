@@ -22,7 +22,7 @@ const SocialLink = ({
             <Tooltip.Trigger asChild>
                 <Link
                     href={href}
-                    className="hover:text-notion-accent transition-colors duration-200 p-2 rounded-md hover:bg-notion-gray-light"
+                    className="transition-colors duration-200 p-2 rounded-md hover:bg-notion-gray-light"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
