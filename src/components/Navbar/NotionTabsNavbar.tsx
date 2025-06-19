@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import * as Tabs from "@radix-ui/react-tabs";
 import { Plus } from "lucide-react";
@@ -32,17 +32,22 @@ export const NotionTabsNavbar = () => {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [openTabs, setOpenTabs] = useState<string[]>(["about"]);
 
-    // Function to determine the active tab based on current pathname
-    const getActiveTab = () => {
+    // Determine the active tab based on current pathname
+    const activeTab = useMemo(() => {
         // Handle root path
         if (pathname === "/") return "about";
 
         // Handle other paths
         const tab = tabs.find((tab) => tab.href === pathname);
         return tab ? tab.key : "about";
-    };
+    }, [pathname]);
 
-    const activeTab = getActiveTab();
+    useEffect(() => {
+        const tab = tabs.find((tab) => tab.href === pathname);
+        if (tab && !openTabs.includes(tab.key)) {
+            setOpenTabs([...openTabs, tab.key]);
+        }
+    }, [pathname, openTabs]);
 
     // Function to open a new tab
     const openTab = (tabKey: string) => {
