@@ -30,6 +30,7 @@ export const NotionTabsNavbar = () => {
     const router = useRouter();
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [openTabs, setOpenTabs] = useState<string[]>(["about"]);
+    const [hoveredTab, setHoveredTab] = useState<string | null>(null);
 
     // Determine the active tab based on current pathname
     const activeTab = useMemo(() => {
@@ -163,10 +164,12 @@ export const NotionTabsNavbar = () => {
                                 "border-r",
                             )}
                             onClick={() => router.push(tab.href)}
+                            onMouseEnter={() => setHoveredTab(tab.key)}
+                            onMouseLeave={() => setHoveredTab(null)}
                         >
                             <div className="flex items-center justify-between w-full">
                                 <span>{tab.label}</span>
-                                {tab.key !== "about" && (
+                                {tab.key !== "about" && hoveredTab === tab.key && (
                                     <div
                                         className="cursor-pointer"
                                         onClick={(e) => {
@@ -176,7 +179,7 @@ export const NotionTabsNavbar = () => {
                                     >
                                         <div
                                             className={cn(
-                                                "p-1/2 flex items-center justify-center hover:rounded-sm",
+                                                "p-1/2 flex items-center justify-center hover:rounded-sm transition-all duration-200",
                                                 activeTab === tab.key
                                                     ? "hover:bg-notion-gray-light"
                                                     : "hover:bg-notion-gray-subtle",
