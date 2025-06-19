@@ -92,7 +92,7 @@ export const NotionTabsNavbar = () => {
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
                     <div className="flex items-center px-2 cursor-pointer">
-                        <div className="p-1 flex items-center justify-center hover:bg-notion-gray-light">
+                        <div className="p-1 flex items-center justify-center hover:bg-notion-gray-light hover:rounded-md">
                             <Plus className=" text-notion-text-secondary" size={18} />
                         </div>
                     </div>
@@ -176,7 +176,7 @@ export const NotionTabsNavbar = () => {
                                     >
                                         <div
                                             className={cn(
-                                                "p-1/2 flex items-center justify-center",
+                                                "p-1/2 flex items-center justify-center hover:rounded-sm",
                                                 activeTab === tab.key
                                                     ? "hover:bg-notion-gray-light"
                                                     : "hover:bg-notion-gray-subtle",
