@@ -7,7 +7,7 @@ import { LINK } from "@/const";
 
 const AboutPage = () => {
     return (
-        <div className="pl-6">
+        <div>
             <Sortable
                 items={[
                     <MarkdownCodeEditor value="I like making and sharing things." />,

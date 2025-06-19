@@ -15,7 +15,7 @@ export const OuterContainer = ({ children }: Props) => {
                     <div className="bg-notion-gray-subtle">
                         <Navbar />
                     </div>
-                    <div className="px-6 py-8 bg-notion-bg">{children}</div>
+                    <div className="p-8 bg-notion-bg">{children}</div>
                     <div className="bg-notion-gray-subtle border-t">
                         <Footer />
                     </div>
