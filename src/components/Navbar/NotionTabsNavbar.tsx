@@ -1,11 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useMemo, useState } from "react";
 
 import * as Tabs from "@radix-ui/react-tabs";
-import { Plus } from "lucide-react";
+import { Plus, X } from "lucide-react";
 
 import {
     Dialog,
@@ -141,7 +140,7 @@ export const NotionTabsNavbar = () => {
                             key={tab.key}
                             value={tab.key}
                             className={cn(
-                                "flex items-center px-5 py-3 min-w-[90px] text-sm font-medium transition-colors",
+                                "flex items-center px-3 py-2 w-32 text-sm font-medium transition-colors",
                                 "bg-transparent text-notion-text-secondary",
                                 activeTab === tab.key
                                     ? "bg-notion-bg text-notion-text font-semibold shadow-sm cursor-default"
@@ -149,9 +148,24 @@ export const NotionTabsNavbar = () => {
                                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-notion-accent focus:z-20",
                                 "border-r",
                             )}
-                            asChild
+                            onClick={() => router.push(tab.href)}
                         >
-                            <Link href={tab.href}>{tab.label}</Link>
+                            <div className="flex items-center justify-between w-full">
+                                <span>{tab.label}</span>
+                                {tab.key !== "about" && (
+                                    <div
+                                        className="cursor-pointer"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            closeTab(tab.key);
+                                        }}
+                                    >
+                                        <div className="p-1 flex items-center justify-center hover:bg-notion-gray-light">
+                                            <X className=" text-notion-text-secondary" size={18} />
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
                         </Tabs.Trigger>
                     ))}
                 </Tabs.List>
