@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 import * as Tabs from "@radix-ui/react-tabs";
@@ -28,7 +28,9 @@ const tabs = [
 
 export const NotionTabsNavbar = () => {
     const pathname = usePathname();
+    const router = useRouter();
     const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [openTabs, setOpenTabs] = useState<string[]>(["about"]);
 
     // Function to determine the active tab based on current pathname
     const getActiveTab = () => {
@@ -41,6 +43,29 @@ export const NotionTabsNavbar = () => {
     };
 
     const activeTab = getActiveTab();
+
+    // Function to open a new tab
+    const openTab = (tabKey: string) => {
+        if (!openTabs.includes(tabKey)) {
+            setOpenTabs([...openTabs, tabKey]);
+        }
+        // Navigate to the tab's page immediately
+        const tab = tabs.find((t) => t.key === tabKey);
+        if (tab) {
+            router.push(tab.href);
+        }
+        setIsDialogOpen(false);
+    };
+
+    // Function to close a tab (except About)
+    const closeTab = (tabKey: string) => {
+        if (tabKey !== "about") {
+            setOpenTabs(openTabs.filter((tab) => tab !== tabKey));
+        }
+    };
+
+    // Get tabs that are currently open
+    const visibleTabs = tabs.filter((tab) => openTabs.includes(tab.key));
 
     return (
         <div className="w-full flex items-center">
@@ -56,29 +81,57 @@ export const NotionTabsNavbar = () => {
                     <DialogHeader>
                         <DialogTitle>Open in new tab...</DialogTitle>
                     </DialogHeader>
-                    <div className="py-2">
-                        {tabs.map((tab) => (
-                            <Link
-                                key={tab.key}
-                                href={tab.href}
-                                className={cn(
-                                    "flex items-center px-4 py-2 rounded-lg transition-colors",
-                                    "hover:bg-notion-gray-light hover:text-notion-text",
-                                    "text-notion-text-secondary cursor-pointer",
-                                )}
-                                onClick={() => {
-                                    setIsDialogOpen(false);
-                                }}
-                            >
-                                <span className="text-sm">{tab.label}</span>
-                            </Link>
-                        ))}
+                    <div className="py-2 space-y-4">
+                        {/* Opened Tabs Section */}
+                        <div>
+                            <h3 className="text-sm font-medium text-notion-text mb-2">Tabs</h3>
+                            {tabs
+                                .filter((tab) => openTabs.includes(tab.key))
+                                .map((tab) => (
+                                    <div
+                                        key={tab.key}
+                                        className={cn(
+                                            "flex items-center px-4 py-2 rounded-lg transition-colors",
+                                            "hover:bg-notion-gray-light hover:text-notion-text",
+                                            "text-notion-text-secondary cursor-pointer",
+                                        )}
+                                        onClick={() => {
+                                            router.push(tab.href);
+                                            setIsDialogOpen(false);
+                                        }}
+                                    >
+                                        <span className="text-sm">{tab.label}</span>
+                                    </div>
+                                ))}
+                        </div>
+
+                        {/* Unopened Pages Section */}
+                        <div>
+                            <h3 className="text-sm font-medium text-notion-text mb-2">Pages</h3>
+                            {tabs
+                                .filter((tab) => !openTabs.includes(tab.key))
+                                .map((tab) => (
+                                    <div
+                                        key={tab.key}
+                                        className={cn(
+                                            "flex items-center px-4 py-2 rounded-lg transition-colors",
+                                            "hover:bg-notion-gray-light hover:text-notion-text",
+                                            "text-notion-text-secondary cursor-pointer",
+                                        )}
+                                        onClick={() => {
+                                            openTab(tab.key);
+                                        }}
+                                    >
+                                        <span className="text-sm">{tab.label}</span>
+                                    </div>
+                                ))}
+                        </div>
                     </div>
                 </DialogContent>
             </Dialog>
             <Tabs.Root value={activeTab} className="flex-1">
                 <Tabs.List className="flex flex-row gap-0">
-                    {tabs.map((tab) => (
+                    {visibleTabs.map((tab) => (
                         <Tabs.Trigger
                             key={tab.key}
                             value={tab.key}
