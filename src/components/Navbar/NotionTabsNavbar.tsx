@@ -2,17 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import * as React from "react";
+import React, { useState } from "react";
 
 import * as Tabs from "@radix-ui/react-tabs";
 import { Plus } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -31,6 +28,7 @@ const tabs = [
 
 export const NotionTabsNavbar = () => {
     const pathname = usePathname();
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     // Function to determine the active tab based on current pathname
     const getActiveTab = () => {
@@ -46,7 +44,7 @@ export const NotionTabsNavbar = () => {
 
     return (
         <div className="w-full flex items-center">
-            <Dialog>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
                     <div className="flex items-center px-2 cursor-pointer">
                         <div className="p-1 flex items-center justify-center hover:bg-notion-gray-light">
@@ -56,13 +54,26 @@ export const NotionTabsNavbar = () => {
                 </DialogTrigger>
                 <DialogContent>
                     <DialogHeader>
-                        <DialogTitle>Add New Page</DialogTitle>
-                        <DialogDescription>Create a new page or section.</DialogDescription>
+                        <DialogTitle>Open in new tab...</DialogTitle>
                     </DialogHeader>
-                    <DialogFooter>
-                        <Button variant="outline">Cancel</Button>
-                        <Button>Create</Button>
-                    </DialogFooter>
+                    <div className="py-2">
+                        {tabs.map((tab) => (
+                            <Link
+                                key={tab.key}
+                                href={tab.href}
+                                className={cn(
+                                    "flex items-center px-4 py-2 rounded-lg transition-colors",
+                                    "hover:bg-notion-gray-light hover:text-notion-text",
+                                    "text-notion-text-secondary cursor-pointer",
+                                )}
+                                onClick={() => {
+                                    setIsDialogOpen(false);
+                                }}
+                            >
+                                <span className="text-sm">{tab.label}</span>
+                            </Link>
+                        ))}
+                    </div>
                 </DialogContent>
             </Dialog>
             <Tabs.Root value={activeTab} className="flex-1">
