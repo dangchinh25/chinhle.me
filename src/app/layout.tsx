@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
     title: "Chinh D. Le",
     icons: {
-        icon: "/favicon.svg",
+        icon: "/avatar.png",
     },
 };
 
@@ -19,7 +19,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <html lang="en">
             <head>
-                <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+                <link rel="icon" href="/avatar.png" type="image/png" />
             </head>
             <body
                 className={`${inter.className} bg-notion-bg-secondary text-notion-text font-notion`}
