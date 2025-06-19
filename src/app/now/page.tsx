@@ -1,13 +1,13 @@
-import { InlineLink } from "@/components/InlineLink";
-import { TextEntry } from "@/components/TextEntry";
+import { MarkdownCodeEditor } from "@/components/CodeEditor/MarkdownCodeEditor";
+import { Sortable } from "@/components/Sortable/Sortable";
 
 const NowPage = () => {
     return (
-        <div>
-            <TextEntry>
-                Building AI Agents at <InlineLink to="https://retool.com" displayText="Retool" />.
-            </TextEntry>
-        </div>
+        <Sortable
+            items={[
+                <MarkdownCodeEditor value="Building AI Agents at [Retool](https://retool.com)." />,
+            ]}
+        />
     );
 };
 
