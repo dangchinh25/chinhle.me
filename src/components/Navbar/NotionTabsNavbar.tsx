@@ -7,6 +7,16 @@ import * as React from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 import { Plus } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
 import { LINK } from "@/const";
 import { cn } from "@/lib/utils";
 
@@ -36,11 +46,25 @@ export const NotionTabsNavbar = () => {
 
     return (
         <div className="w-full flex items-center">
-            <div className="flex items-center px-2 cursor-pointer">
-                <div className="p-1 flex items-center justify-center hover:bg-notion-gray-light">
-                    <Plus className=" text-notion-text-secondary" size={18} />
-                </div>
-            </div>
+            <Dialog>
+                <DialogTrigger asChild>
+                    <div className="flex items-center px-2 cursor-pointer">
+                        <div className="p-1 flex items-center justify-center hover:bg-notion-gray-light">
+                            <Plus className=" text-notion-text-secondary" size={18} />
+                        </div>
+                    </div>
+                </DialogTrigger>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Add New Page</DialogTitle>
+                        <DialogDescription>Create a new page or section.</DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter>
+                        <Button variant="outline">Cancel</Button>
+                        <Button>Create</Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
             <Tabs.Root value={activeTab} className="flex-1">
                 <Tabs.List className="flex flex-row gap-0">
                     {tabs.map((tab) => (
