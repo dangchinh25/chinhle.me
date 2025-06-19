@@ -64,8 +64,10 @@ export const NotionTabsNavbar = () => {
         }
     };
 
-    // Get tabs that are currently open
-    const visibleTabs = tabs.filter((tab) => openTabs.includes(tab.key));
+    // Get tabs that are currently open, maintaining the order they were opened
+    const visibleTabs = openTabs
+        .map((tabKey) => tabs.find((tab) => tab.key === tabKey))
+        .filter((tab): tab is (typeof tabs)[0] => tab !== undefined);
 
     return (
         <div className="w-full flex items-center">
@@ -85,24 +87,22 @@ export const NotionTabsNavbar = () => {
                         {/* Opened Tabs Section */}
                         <div>
                             <h3 className="text-sm font-medium text-notion-text mb-2">Tabs</h3>
-                            {tabs
-                                .filter((tab) => openTabs.includes(tab.key))
-                                .map((tab) => (
-                                    <div
-                                        key={tab.key}
-                                        className={cn(
-                                            "flex items-center px-4 py-2 rounded-lg transition-colors",
-                                            "hover:bg-notion-gray-light hover:text-notion-text",
-                                            "text-notion-text-secondary cursor-pointer",
-                                        )}
-                                        onClick={() => {
-                                            router.push(tab.href);
-                                            setIsDialogOpen(false);
-                                        }}
-                                    >
-                                        <span className="text-sm">{tab.label}</span>
-                                    </div>
-                                ))}
+                            {visibleTabs.map((tab) => (
+                                <div
+                                    key={tab.key}
+                                    className={cn(
+                                        "flex items-center px-4 py-2 rounded-lg transition-colors",
+                                        "hover:bg-notion-gray-light hover:text-notion-text",
+                                        "text-notion-text-secondary cursor-pointer",
+                                    )}
+                                    onClick={() => {
+                                        router.push(tab.href);
+                                        setIsDialogOpen(false);
+                                    }}
+                                >
+                                    <span className="text-sm">{tab.label}</span>
+                                </div>
+                            ))}
                         </div>
 
                         {/* Unopened Pages Section */}
